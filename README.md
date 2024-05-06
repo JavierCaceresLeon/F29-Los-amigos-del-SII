@@ -25,3 +25,7 @@ La complejidad y las dificultades asociadas con el cumplimiento de los plazos y 
 # Propuesta a solución
 
 El software propuesto busca automatizar y simplificar estos procesos, proporcionando notificaciones, recordatorios y herramientas para el control eficiente de los documentos fiscales y el cumplimiento de la normativa vigente.
+
+# Esque pantallas
+
+![Pantallas](TEL335_F29.drawio.jpg)
