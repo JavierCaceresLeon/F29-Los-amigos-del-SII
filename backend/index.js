@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 // Simulated database of users
 const users = [
-    {username: "user00", password: "password", email: "user00@example.com", rut: "12345678-9"}
+    {username: "user00", password: "password", email: "user00@example.com", rut: "12345678-9"},{username: "user00s", password: "passwords", email: "user00@example.co", rut: "12345678-7"}
 ];
 
 // Login route
@@ -29,6 +29,39 @@ app.post('/login', (req, res) => {
         res.status(401).send('Authentication failed');
     }
 });
+ArrayObjectclient=[{rut: "12345678-9", nombre: "Juan Perez", direccion: "Calle 123", telefono: "12345678", email: "hola@usm.cl"}]
+app.post('/api/cliente', (req, res) => {
+    const { rut, nombre, direccion, telefono, email } = req.body;
+    ArrayObjectclient.push({rut: rut, nombre: nombre, direccion: direccion, telefono: telefono, email: email})
+    res.send(`Cliente ${nombre} creado con exito`);
+});
+app.get('/api/cliente', (req, res) => {
+    res.send(ArrayObjectclient);
+}
+);
+app.get('/api/cliente/:rut', (req, res) => {
+    const rut = req.params.rut;
+    const cliente = ArrayObjectclient.find(c => c.rut === rut);
+    if (cliente) {
+        res.send(cliente);
+    } else {
+        res.status(404).send('Cliente no encontrado');
+    }
+}
+);
+
+app.put('/api/cliente', (req, res) => {
+    const { rut, nombre, direccion, telefono, email } = req.body;
+    for (let i = 0; i < ArrayObjectclient.length; i++) {
+        if (ArrayObjectclient[i].rut === rut) {
+            ArrayObjectclient[i] = {rut: rut, nombre: nombre, direccion: direccion, telefono: telefono, email: email}
+            res.send(`Cliente ${nombre} modificado con exito`);
+            return;
+        }
+    }
+    res.status(404).send('Cliente no encontrado');
+}
+);
 
 // Server setup
 app.listen(3000, () => {
