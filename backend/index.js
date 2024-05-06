@@ -50,12 +50,27 @@ app.get('/api/cliente/:rut', (req, res) => {
 }
 );
 
-app.put('/api/cliente', (req, res) => {
+app.put('/api/cliente/:rut_sel', (req, res) => {
+    const rut_sel = req.params.rut_sel;
     const { rut, nombre, direccion, telefono, email } = req.body;
     for (let i = 0; i < ArrayObjectclient.length; i++) {
-        if (ArrayObjectclient[i].rut === rut) {
-            ArrayObjectclient[i] = {rut: rut, nombre: nombre, direccion: direccion, telefono: telefono, email: email}
-            res.send(`Cliente ${nombre} modificado con exito`);
+        if (ArrayObjectclient[i].rut === rut_sel) {
+            ArrayObjectclient[i] = {rut: rut, nombre: nombre, direccion: direccion, telefono: telefono, email: email};
+            res.send(`Cliente ${nombre} actualizado con exito`);
+            return;
+        }
+    }
+    res.status(404).send('Cliente no encontrado');
+}
+    
+);
+
+app.delete('/api/cliente/:rut_sel', (req, res) => {
+    const rut = req.params.rut_sel;
+    for (let i = 0; i < ArrayObjectclient.length; i++) {
+        if (ArrayObjectclient[i].rut === rut_sel) {
+            ArrayObjectclient.splice(i, 1);
+            res.send(`Cliente ${rut} eliminado con exito`);
             return;
         }
     }
