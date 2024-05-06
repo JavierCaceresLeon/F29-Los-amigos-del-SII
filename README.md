@@ -4,7 +4,7 @@ En el siguiente repositorio encontrará un proyecto de la asignatura TEL335
 
 # Integrantes
 
-* Cristóbal Moraga Guerrero
+* Cristóbal Moraga Guerrero - 202130008-2
 * Vicente Tejos Medel
 * Javier Cáceres León
 
