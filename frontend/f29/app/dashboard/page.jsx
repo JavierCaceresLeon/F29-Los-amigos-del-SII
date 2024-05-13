@@ -1,5 +1,7 @@
-import UserInfo from "@/components/UserInfo";
+import Dashboard from "@/components/DashboardForm";
 
-export default function Dashboard() {
-  return <UserInfo />;
+export default function DashboardForm() {
+  return (
+    <Dashboard/>
+  );
 }
