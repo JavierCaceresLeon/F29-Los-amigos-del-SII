@@ -1,8 +1,3 @@
-//export default function EliminarCliente() {
-//   return (
-//        <div>Elimine al cliente que quiera</div>
-//    )
-//}
 import React, { useState } from "react";
 
 export default function EliminarCliente() {
@@ -12,8 +7,33 @@ export default function EliminarCliente() {
   ]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const formatRUT = (rut) => {
+    // Elimina cualquier carácter que no sea dígito
+    rut = rut.replace(/\D/g, "");
+
+    // Si el RUT tiene más de 1 dígito, inserta el guion antes del dígito verificador
+    if (rut.length > 1) {
+      rut = rut.slice(0, -1) + "-" + rut.slice(-1);
+    }
+
+    // Inserta puntos cada 3 dígitos antes del guion
+    if (rut.length > 5) {
+      rut = rut.slice(0, -5) + "." + rut.slice(-5);
+    }
+    if (rut.length > 9) {
+      rut = rut.slice(0, -9) + "." + rut.slice(-9);
+    }
+    if (rut.length > 12) {
+      rut = rut.slice(0, -12) + "." + rut.slice(-12);
+    }
+
+    return rut;
+  };
+
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    const rawValue = event.target.value;
+    const formattedRUT = formatRUT(rawValue);
+    setSearchTerm(formattedRUT);
   };
 
   const handleDelete = (rut) => {
