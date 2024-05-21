@@ -1,0 +1,16 @@
+.custom-calendar .fc-toolbar-title {
+    color: #007bff; /* Cambia el color del nombre del mes */
+  }
+  
+  .custom-calendar .fc-timegrid-axis-cushion {
+    color: #007bff; /* Cambia el color de la hora en las vistas de semana y día */
+  }
+  
+  .custom-calendar .fc-col-header-cell-cushion {
+    color: #007bff; /* Cambia el color de los días de la semana en la vista de mes */
+  }
+  
+  .custom-calendar .fc-daygrid-day-number {
+    color: #007bff; /* Cambia el color de los números de los días en la vista de mes */
+  }
+  
