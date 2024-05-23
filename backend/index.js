@@ -20,8 +20,6 @@ app.post(/login/, (req, res) => {
 var ObjectArray1 = [{username:"user00",password:"password",email:"example.com",rut:"12345678-9"}]
 
 
-
-
 app.listen(3000, () => {
     console.log('Server is running on port 3000')
     }

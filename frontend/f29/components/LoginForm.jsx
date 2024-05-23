@@ -1,21 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  
+  const handleLogin = async () => {
+    if (!email || !password) {
+        alert('Por favor, completa todos los campos.');
+        return;
+    }
+    }
 
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
 
     try {
-      const res = await signIn("credentials", {
+      const res = await axios.post('192.168.61.17', { //CAMBIAR ESTO POR LA IP DE LA MÁQUINA CON LA BD
         email,
         password,
         redirect: false,
@@ -25,8 +32,8 @@ export default function LoginForm() {
         setError("Mail o contraseña incorrectos");
         return;
       }
-
       router.replace("dashboard");
+      
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +55,7 @@ export default function LoginForm() {
             type="password"
             placeholder="Contraseña"
           />
-          <button className="bg-green-600 text-white font-bold cursor-pointer px-6 py-2">
+          <button className="bg-green-600 text-white font-bold cursor-pointer px-6 py-2" onClick={handleLogin}>
             Enviar
           </button>
           {error && (

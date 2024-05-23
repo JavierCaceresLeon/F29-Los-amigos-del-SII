@@ -10,10 +10,6 @@ export default function Home() {
     router.push('/login');
   };
 
-  const handleDashboard = () => {
-    router.push('/dashboard');
-  };
-
   return (
     <div className={styles.container}>
       <main>
