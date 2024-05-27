@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -24,7 +23,7 @@ export default function LoginForm() {
     
 
     try {
-      const res = await axios.post('localhost:30300/login', { //CAMBIAR ESTO POR LA IP DE LA MÁQUINA CON LA BD
+      const res = await axios.post('http://192.168.0.176:33000/login', { //CAMBIAR ESTO POR LA IP DE LA MÁQUINA CON LA BD
         email,
         password,
         redirect: false,
