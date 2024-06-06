@@ -33,7 +33,10 @@ export default function LoginForm() {
         setError("Mail o contraseña incorrectos");
         return;
       }
-      router.replace("dashboard");
+      if(res.status == "200"){
+        logged = true;
+        router.replace("dashboard");
+      }
       
     } catch (error) {
       console.log(error);

@@ -1,37 +1,41 @@
 'use client';
 
-import { useRouter, redirect } from 'next/navigation';
-import styles from './Home.modules.css';
+import Lista from './api/vercliente/page';
+import Dashboard from '@/components/DashboardForm';
+import Calendar from './api/calendario/calendario';
+import AgregarCliente from './api/anadircliente/anadircliente';
+import EliminarCliente from './api/eliminarcliente/eliminarcliente';
+import ActualizarCliente from './api/actualizarcliente/actualizarcliente';
+import Home from './home';
+import { Routes, Route } from 'react-router-dom';
 
-export default function Home() {
-  const router = useRouter();
+// Variable global para simular el estado de login
+let logged = false;
 
-  const handleLogin = () => {
-    router.push('/login');
-  };
+// Componente ProtectedRoute para proteger rutas
+const ProtectedRoute = ({ isAllowed, children }) => {
+  if (!isAllowed) {
+    // Redirección si el usuario no está autorizado
+    return <Navigate to="/landing" replace />;
+  }
+  return children ? children : <Outlet />;
+};
 
+// En la estructura de rutas, se utiliza ProtectedRoute para proteger las rutas
+export default function App () {
   return (
-    <div className={styles.container}>
-      <main>
-        <body className="bg-black text-white min-h-screen flex flex-col justify-center items-center">
-        <div className="max-w-screen-lg mx-auto p-4">
-          <div className="flex justify-between items-center border-b border-zinc-200 pb-4">
-            <span className="text-white text-xl font-bold mb-3 transform hover:scale-110 transition-all duration-300">F29</span>
-            <button className="bg-transparent border border-white text-white py-2 px-4 rounded shadow-md transform hover:-translate-y-1 transition-all duration-600 " onClick={handleLogin}>Iniciar Sesión</button>
-          </div>
-      
-          <div className="text-center py-8">
-            <h1 className="text-2xl font-bold mb-3 transform hover:scale-110 transition-all duration-300">¿Qué es F29?</h1>
-            <p className="mb-6">
-              F29 Es la mejor aplicación para contadores, auditores y toda aquella gente del mundo de las finanzas. Con una interfaz simple y cómoda, lograrás manejar tus clientes, llevar un registro y trazabiidad de fechas, documentos y pagos pendientes. ¡Pruébala!
-            </p>
-            <div className="inline-block p-4 bg-white rounded-lg">
-              <img src="/f29.jpg" alt="banner/imágen" className="w-full h-auto"></img>
-            </div>
-          </div>
-        </div>
-      </body>
-    </main>
-    </div>
+    <Home>
+      <Routes>
+        <Route element={<ProtectedRoute isAllowed={logged} />}>
+          <Route path="components/dashboard" element={<Dashboard />} />
+          <Route path="api/vercliente" element={<Lista />} />
+          <Route path="api/actualizarcliente" element={<ActualizarCliente />} />
+          <Route path="api/anadircliente" element={<AgregarCliente />} />
+          <Route path="api/eliminarcliente" element={<EliminarCliente />} />
+          <Route path="api/calendario" element={<Calendar />} />
+        </Route>
+        <Route path="home" element={<Home />} />
+      </Routes>
+    </Home>
   );
-}
+};

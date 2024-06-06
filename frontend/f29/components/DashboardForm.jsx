@@ -26,6 +26,7 @@ export default function Dashboard() {
       
               <div className="bg-white dark:bg-zinc-700 text-black dark:text-white p-4 rounded-md shadow-lg my-6 text-center">
                 Bienvenido, {session && session.user && session.user.name}
+                
               </div>
       
               <div className="flex flex-wrap justify-center gap-4 mb-4">
