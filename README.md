@@ -1,6 +1,6 @@
 # F29-Los-amigos-del-SII
 
-En el siguiente repositorio encontrará un proyecto de la asignatura TEL335
+En el siguiente repositorio encontrará el proyecto llevado a cabo para la asignatura TEL335 - Disseño de Aplicaciones Web y Móviles
 
 # Integrantes
 
@@ -22,10 +22,10 @@ La complejidad y las dificultades asociadas con el cumplimiento de los plazos y 
 
 5. Dificultades de la gestión contable.
 
-# Propuesta a solución
+# Propuesta de solución
 
 El software propuesto busca automatizar y simplificar estos procesos, proporcionando notificaciones, recordatorios y herramientas para el control eficiente de los documentos fiscales y el cumplimiento de la normativa vigente.
 
-# Esque pantallas
+# Bosquejo de pantallas
 
 ![Pantallas](TEL335_F29.drawio.jpg)
