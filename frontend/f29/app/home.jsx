@@ -2,12 +2,13 @@
 
 import { useRouter, redirect } from 'next/navigation';
 import styles from './Home.modules.css';
+import jwtDecode from 'jwt-decode';
 
 export default function Home() {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.push('/login');
+    window.location.href = '/login';
   };
 
   return (

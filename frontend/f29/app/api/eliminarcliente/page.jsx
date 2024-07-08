@@ -1,3 +1,6 @@
+'use client';
+
+
 import React, { useState } from "react";
 
 export default function EliminarCliente() {
@@ -40,7 +43,29 @@ export default function EliminarCliente() {
     setClientList(clientList.filter((client) => client.rut !== rut));
   };
 
+  const handleback = () => {
+    window.location.href = '/api/dashboard';
+};
+
+const handlelogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
+};
+
   return (
+    <body className="bg-gradient-to-r from-cyan-500 to-blue-500 dark:from-cyan-700 dark:to-blue-700 min-h-screen p-4">
+    <div className="container mx-auto p-4 flex flex-col items-center">
+      <button className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:-translate-y-1 transition-all duration-300" onClick={handleback}>Volver a Dashboard</button>
+        
+        <div className="w-full max-w-4xl mx-auto flex justify-between items-center">
+            <div className="text-white text-lg font-semibold">Panel de Control F29</div>
+            <button className="bg-red-500 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg shadow-md transform hover:-translate-y-1 transition-all duration-300"onClick={handlelogout}>Cerrar Sesión</button>
+        </div>
+
+        <div className="bg-white dark:bg-zinc-700 text-black dark:text-white p-4 rounded-md shadow-lg my-6 text-center">
+            Bienvenido estimado usuario 
+        </div>
+
     <div className="bg-white dark:bg-zinc-700 p-4 rounded-md shadow-xl mt-6">
       <h2 className="text-xl font-bold text-gray-800 dark:text-white text-center mb-4">
         Eliminar Cliente
@@ -85,5 +110,7 @@ export default function EliminarCliente() {
         </ul>
       </div>
     </div>
+    </div>
+      </body>
   );
 }
